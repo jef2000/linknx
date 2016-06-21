@@ -1,0 +1,15 @@
+Makefile
+*.o
+*.cache
+*.log
+stamp-h1
+config.h
+config.h.in
+configure
+.deps
+*.a
+config.status
+.dirstamp
+Makefile.in
+*.m4
+.*.sw?

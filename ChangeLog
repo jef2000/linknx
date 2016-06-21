@@ -1,0 +1,281 @@
+Release 0.0.1.33:
+    * Fix autoconf part including added include files for some source code files
+Release 0.0.1.32:
+    * Increase version number to avoid confusion between this official release and previous CVS snapshots
+Release 0.0.1.31:
+    * Fix error for "exception-day" value in request for calendar info with a given date
+    * Fix error when saving serial ioport parity settings
+    * Value for 16 bit float is rounded to the closest valid value
+    * Offset parameter for variable timespecs (fraxinas)
+    * Timestrings padding (e.g. 08:05:00 instead of 8:5:0 ) (fraxinas)
+    * Fix threading issue with ioport actions (Cyrille Defranoux)
+    * Mysql character set config (fraxinas)
+    * Add some KNX datatypes
+    * Fix timers going completely nuts when there is a time change from summer to winter time
+    * Fix bug "#13 Rules not working if read request fails"
+    * Fix compile problem with "close" function and gcc 4.7
+    * max 2 events per second for DimUp Action (Othmar) and fix underflow bug when dimming down to zero
+    * allow evaluation of condition to set rule's initial state (Cyrille Defranoux)
+    * logging of unknown objects
+    * Enhanced pattern matching on ioport rx (POSIX regular expression)
+Release 0.0.1.30:
+    * Increase version number to avoid confusion between this official release and previous CVS snapshots
+Release 0.0.1.29:
+    * Add value "0" = auto for 20.102 HeatingMode (as defined in the Datapoint Types) (stefdude) 
+    * Add usage count on objects to prevent removal of objects in use
+    * Fix crash in case of invalid group address
+    * Better error message when linknx server initialization fails 
+    * Output LUA scripts and e-mail body text as CDATA sections for better readability 
+    * Add an optional "description" attribute to rule definitions
+    * Add action "set-rule-active" to enable or disable a given rule
+    * Add "threshold" condition to detect threshold crossing for numeric objects.
+    * Add xml request to execute actions (<execute><action .../><action .../></execute>)
+    * Change linknx.xml file to an almost empty config. Sample config is now in sample.xml
+    * Add xml request for sunrise/sunset/noon time and for exception days (<read><calendar month="9" day="30" /></read>)
+    * Add action "start-actionlist" to force execution of the complete actionlist from a given rule
+    * Add possibility to force execution of an actionlist on xml interface
+    * Read version string and optional feature set on xml interface
+    * Add "from" attribute for SMS gateway (Sender ID).
+    * Add precision setting (rounding of value) for objects with floating point value.
+    * Add locking to protect LUA scripting engine (stefdude)
+    * DimUpAction: take into account the stop-limit inclusive (stefdude)
+    * Allow DimUpAction for object types 5.001 and 5.003 (stefdude)
+    * Add formula action ( compute a value based on formula a*x^m+b*y^n+c )
+    * Allow to clear list of exception days using XML interface
+    * Add support for baud rate 200, 300, 600, 1200 and 230400 for serial io-port
+    * Disable signed 64 bit objects if STL streams doesn't support it (uclibc++)
+    * Restrict DPT 16.000 to ASCII codes 0 to 127 and add DPT 16.001 with range 0 to 255
+Release 0.0.1.28:
+    * Add conditional actions (skip executions of a group of actions based on a given condition)
+    * Do not execute stateless rules at init (problem with object conditions because EIBD connection not yet established)
+    * Avoid use of tmpfile() function in XML parser (not supported on FritzBox)
+    * Allow to insert object values in some actions (shell, e-mail, SMS, io-port, set-string)
+    * Add condition to compare 2 objects (requires complete refactoring of Object and ObjectValue classes)
+    * Fix for exportXML with Object-Conditions without value (michael111)
+    * Add "toggle-value" action that will toggle value of a switching object
+    * Allow millisecond delays in actions
+    * Add "repeat" action that repeats a list of actions periodically a specified number of times 
+    * Add "cancel" action to cancel all ongoing actions of a rule
+    * Add "send-read-request" action that will force sending of a read request on the bus
+    * Add attribute read="true" for listener address which is used to send read request on the bus
+    * Initial schedule for timers with at and *during* fixed (michael111)
+	* Support for serial IO port
+	* Support for variable length string objects (DPT 28.001)
+	* Allow multiple messages in receive buffer (Mike Pieper)
+	* Add command to Register/Unregister all objects for notification (Mike Pieper)
+	* Better command-line parameter error reporting (Mike Pieper)
+	* Fixes the XML for a notification message (Mike Pieper)
+	* Avoid linknx crash in case of mysql error
+	* Time-counter bugfix and 0-threshold support (Auto-Mate)
+	* Fix bug on x64 due to size_t != unsigned int
+	* Add command to query rules/timers status
+	* Add support for DPT 29.xxx (signed 64bit value)
+	* Fix TimeCounter condition not removed from timer queue when rescheduled
+Release 0.0.1.27:
+	* Fix compiler warnings
+	* Fix crash on some ARM architecture due to wrong static member initialization order
+	* Allow XML client to register for object change notifications
+	* improved mysql support (some error logging + persistent) by stefdude (at) users.sourceforge.net
+	* add LUA function to check for exception days
+	* Add support for stateless objects and rules
+	* Fix bug with "lte" comparison operator
+
+Release 0.0.1.26:
+	* Added LUA scripting support
+	* Added io port for UDP datagram transmission
+	* Improve the logging capabilities
+	* Fix sunrise/sunset compilation issues on platforms without tm_gmtoff
+	* Add warning message if libesmtp is compiled with pthread support
+	* Fix bug in blinds object
+
+Release 0.0.1.25:
+
+2008-07-30  J-F Meessen
+
+	* Add XML command to save current config to a file
+
+2008-07-20  J-F Meessen
+
+	* Add new KNX data-types (8, 16 and 32 bit signed/unsigned int and IEEE754 32 bit float)
+	* Add time-counter condition
+
+2008-07-05  J-F Meessen
+
+	* Improve delay configuration (allow d, h or m at end for days, hours or minutes)
+	* Improve version information
+	* Fix EIS4 datatype (11.001 - date) year encoding not compliant
+
+2008-06-25  J-F Meessen
+
+	* Add Sunrise/Sunset/Noon timespec
+
+2008-05-23  J-F Meessen
+
+	* Catch invalid values in copyValueAction
+
+Release 0.0.1.24:
+
+2008-03-09  J-F Meessen
+
+	* Fix comparison problems with dimming values "up" coming from bus
+	* Add "copy-value" action
+
+2008-02-21  J-F Meessen
+
+	* Avoid 1 second wait time when reading group objects that doesn't reply on the bus
+
+Release 0.0.1.23:
+
+2008-01-31  J-F Meessen
+
+	* Fix 40ms delay when performing successive XML requests
+	* Forbid slashes in object ID's
+	* Add XML command to read all/multiple objects
+	* Fix bug in setvalue and compare for time/date value set to "now"
+
+2008-01-14  J-F Meessen
+
+	* Fix compile error when libesmtp not installed
+
+2008-01-10  J-F Meessen
+
+	* Add mysql support for persistence
+
+2007-12-24  J-F Meessen
+
+	* Fix xml export of object-src action
+
+Release 0.0.1.22:
+
+2007-12-11  J-F Meessen
+
+	* Add logging capabilities per communication object
+	* Add support for SMTP auth to support mail servers requiring  authentication
+	* Fix segfault when no -w param on command line
+
+2007-12-04  J-F Meessen
+
+	* Add workaround for eof flag bug in uClibc++ v0.2.2
+
+Release 0.0.1.21:
+
+2007-12-03  J-F Meessen
+
+	* Move config and persistence files to FHS compliant locations
+	* Allow user to tell if/where the config is written when linknx is stopped
+
+2007-12-02  J-F Meessen
+
+	* Added linknx.spec file to be able to build rpm with command "rpmbuild -ta"
+
+2007-11-23  J-F Meessen
+
+	* Allow comparisons (<, >, >=, <=, <>, ==) for conditions on object values
+
+Release 0.0.1.20:
+
+2007-11-17  J-F Meessen
+
+	* Add "stop condition" allowing to interrupt cycleOnOffAction
+
+2007-11-15  Matthias Friedrich & J-F Meessen
+
+	* Add 14 character String object EIS15
+
+2007-11-15  J-F Meessen
+
+	* Add implementation for FilePersitentStorage
+
+2007-11-12  J-F Meessen
+
+	* Add ETS-like flags for communication objects
+
+Release 0.0.1.19:
+
+2007-11-07  J-F Meessen
+
+	* Allow to configure listener group adresses for objects
+
+Release 0.0.1.18:
+
+2007-10-22  J-F Meessen
+
+	* Added Unit Test framework
+
+2007-10-20  J-F Meessen
+
+	* Add condition "object-src" evaluating true only if source of last received state matches specified
+
+2007-10-18  J-F Meessen
+
+	* Add support for timers driven by date/time objects (EIS3/EIS4)
+
+Release 0.0.1.17:
+
+2007-10-10  J-F Meessen
+
+	* Use formatted values in XmlServer instead of float
+	
+Release 0.0.1.16:
+
+2007-10-07  J-F Meessen
+
+	* Add ShellCommandAction to be able to execute any shell command
+
+2007-10-03  J-F Meessen
+
+	* Add SendEmailAction to be able to send mails
+	* Code reformatting with Astyle to fix tab/space mixing (rule: no tabs; 4 spaces by indent)
+
+Release 0.0.1.15:
+
+2007-10-01  J-F Meessen
+
+	* Complete refactoring of group-object value and type system
+
+Release 0.0.1.14:
+
+2007-09-29  J-F Meessen
+
+	* Make KnxConnection more robust (retry every 60 sec if connection failed)
+
+2007-09-27  J-F Meessen
+
+	* Allow startup without config file specified
+	* Allow config files with some of the sections missing (rules, objects, services)
+	* Added support for EIS3 (Time) and EIS4 (date)
+	* Added support for modify/delete of objects, rules or services via xml commands
+	* Added <every> element in timer condition to support for periodic events (e.g. every 15 seconds)
+
+2007-09-27  J-F Meessen
+
+	* Allow startup without config file specified
+	* Allow config files with some of the sections missing (rules, objects, services)
+
+Release 0.0.1.13:
+
+2007-09-23  J-F Meessen
+
+	* Add notification when instantaneous PeriodicTask's value is going back to false
+
+2007-09-22  Cyrille Demaret
+
+	* Forcewrite flag
+	* DimmingObject
+
+2007-09-17  J-F Meessen
+
+	* Fix read operation multi-threading problem
+
+2007-09-17  J-F Meessen & Cyrille Demaret
+
+	* Fix EIS5 floating point numbers conversion issues
+
+2007-09-10  J-F Meessen
+
+	* Fix start/stop/duration in DimupAction
+	* Allow increasing and decreasing intensity in DimupAction
+
+Release 0.0.1.12:
+
+???
