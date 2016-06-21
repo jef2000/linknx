@@ -452,6 +452,11 @@ int TcpClientIOPort::get(uint8_t* buf, int len, pth_event_t stop)
             else {
                 if (pth_event_status (stop) == PTH_STATUS_OCCURRED)
                     retry = false;
+                else if (permanent_m && permanentSockfd_m >= 0)
+                {
+                    close(permanentSockfd_m);
+                    permanentSockfd_m = -1;
+                }
             }
         }
         else {
