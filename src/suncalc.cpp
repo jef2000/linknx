@@ -25,9 +25,6 @@
 #include "suncalc.h"
 #include "services.h"
 
-namespace suncalc
-{
-
 /*
 SUNRISET.C - computes Sun rise/set times, start/end of twilight, and
              the length of the day at any date and latitude
@@ -49,6 +46,9 @@ Released to the public domain by Paul Schlyter, December 1992
 #include <stdlib.h>
 #include <getopt.h>
 #include <string.h>
+
+namespace suncalc
+{
 
 /* A macro to compute the number of days elapsed since 2000 Jan 0.0 */
 /* (which is equal to 1999 Dec 31, 0h UT)                           */
